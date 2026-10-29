@@ -17,6 +17,8 @@
     <!-- Minimum Jackson releases that fix the transitive GHSA findings. -->
     <jackson.version>2.22.3</jackson.version>
     <jackson3.version>3.1.7</jackson3.version>
+    <!-- Minimum OpenTelemetry release that fixes GHSA-ccrj-gw8r-854m. -->
+    <opentelemetry.version>1.67.0</opentelemetry.version>
   </properties>
 
   <dependencyManagement>
@@ -33,6 +35,14 @@
         <groupId>tools.jackson</groupId>
         <artifactId>jackson-bom</artifactId>
         <version>${jackson3.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <!-- elasticsearch-java 9.5.5 declares opentelemetry-api 1.63.0. No newer 9.x client exists. -->
+      <dependency>
+        <groupId>io.opentelemetry</groupId>
+        <artifactId>opentelemetry-bom</artifactId>
+        <version>${opentelemetry.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
